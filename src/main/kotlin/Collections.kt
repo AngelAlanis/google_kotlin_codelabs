@@ -1,16 +1,30 @@
 fun main() {
-    val numbers = listOf(0, 3, 8, 4, 0, 5, 5, 8, 9, 2)
-    println("list: $numbers")
-    println("sorted: ${numbers.sorted()}")
+    val peopleAges = mutableMapOf<String, Int>(
+        "Fred" to 30,
+        "Ann" to 23
+    )
+    println(peopleAges)
 
-    val setOfNumbers = numbers.toSet()
-    println("set: $setOfNumbers")
+    // Two ways of adding values to the map
+    peopleAges.put("Barbara", 42)
+    peopleAges["Joe"] = 51
 
-    val set1 = setOf(1,2,3)
-    val set2 = mutableSetOf(3,2,1)
+    // Replacing the value of the key 'Fred'
+    peopleAges["Fred"] = 31
 
-    println("$set1 == $set2: ${set1 == set2}")
+    println(peopleAges)
 
-    println("contains 3: ${setOfNumbers.contains(3)}")
+    // Make a forEach operation
+    peopleAges.forEach { print("${it.key} is ${it.value}, ") }
+
+    println()
+
+    // Apply a map transformation for each item and convert it to a string
+    println(peopleAges.map { "${it.key} is ${it.value}" }.joinToString(", "))
+
+    // Filter operation
+    // Filter keys (names) to show only those with less than 4 characters
+    val filteredNames = peopleAges.filter { it.key.length < 4 }
+    print(filteredNames)
 
 }
